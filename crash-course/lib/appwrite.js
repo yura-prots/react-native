@@ -17,11 +17,18 @@ export const config = {
   storageId: "66e542dd00075e251553",
 };
 
+const {
+  endpoint,
+  projectId,
+  platform,
+  databaseId,
+  userCollectionId,
+  videoCollectionId,
+  storageId,
+} = config;
+
 const client = new Client();
-client
-  .setEndpoint(config.endpoint)
-  .setProject(config.projectId)
-  .setPlatform(config.platform);
+client.setEndpoint(endpoint).setProject(projectId).setPlatform(platform);
 
 const account = new Account(client);
 const avatars = new Avatars(client);
@@ -43,8 +50,8 @@ export const createUser = async (email, password, username) => {
     await signIn(email, password);
 
     const newUser = await database.createDocument(
-      config.databaseId,
-      config.userCollectionId,
+      databaseId,
+      userCollectionId,
       ID.unique(),
       {
         accountId: newAccount.$id,
@@ -80,8 +87,8 @@ export const getCurrentUser = async () => {
     if (!currentAccount) throw new Error();
 
     const currentUser = await database.listDocuments(
-      config.databaseId,
-      config.userCollectionId,
+      databaseId,
+      userCollectionId,
       [Query.equal("accountId", currentAccount.$id)],
     );
 
@@ -91,6 +98,16 @@ export const getCurrentUser = async () => {
   } catch (error) {
     console.log(error);
 
+    throw new Error(error);
+  }
+};
+
+export const getAllPosts = async () => {
+  try {
+    const posts = await database.listDocuments(databaseId, videoCollectionId);
+
+    return posts.documents;
+  } catch (error) {
     throw new Error(error);
   }
 };
