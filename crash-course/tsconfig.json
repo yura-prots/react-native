@@ -16,7 +16,7 @@
     "app/(tabs)/profile.jsx",
     "app/(tabs)/home.jsx",
     "app/(tabs)/create.jsx",
-    "app/(tabs)/bookmark.jsx",
+    "app/(tabs)/saved.jsx",
     "app/(tabs)/_layout.jsx",
     "app/(auth)/sign-up.jsx",
     "app/(auth)/sign-in.jsx",

@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const Bookmark = () => {
+const SavedVideos = () => {
   return (
     <View>
-      <Text>Bookmark</Text>
+      <Text>SavedVideos</Text>
     </View>
   );
 };
 
-export default Bookmark;
+export default SavedVideos;

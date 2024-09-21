@@ -232,6 +232,7 @@ export const createVideo = async form => {
         video: videoUrl,
         prompt: form.prompt,
         creator: form.userId,
+        favorite: form.favorite,
       },
     );
 

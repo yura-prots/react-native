@@ -15,8 +15,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
       />
       <Text
         className={`${focused} ? "font-psemibold" : "font-pregular" text-xs`}
-        style={{ color: color }}
-      >
+        style={{ color: color }}>
         {name}
       </Text>
     </View>
@@ -37,8 +36,7 @@ const TabsLayout = () => {
             borderTopColor: "#232533",
             height: 84,
           },
-        }}
-      >
+        }}>
         <Tabs.Screen
           name="home"
           options={{
@@ -54,21 +52,7 @@ const TabsLayout = () => {
             ),
           }}
         />
-        <Tabs.Screen
-          name="bookmark"
-          options={{
-            title: "Bookmark",
-            headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                icon={icons.bookmark}
-                color={color}
-                name="Bookmark"
-                focused={focused}
-              />
-            ),
-          }}
-        />
+
         <Tabs.Screen
           name="create"
           options={{
@@ -94,6 +78,21 @@ const TabsLayout = () => {
                 icon={icons.profile}
                 color={color}
                 name="Profile"
+                focused={focused}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="saved"
+          options={{
+            title: "Saved Videos",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.bookmark}
+                color={color}
+                name="Saved"
                 focused={focused}
               />
             ),

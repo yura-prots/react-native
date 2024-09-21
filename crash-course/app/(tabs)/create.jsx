@@ -21,11 +21,13 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 const Create = () => {
   const { user } = useGlobalContext();
   const [uploading, setUploading] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [form, setForm] = useState({
     title: "",
     video: null,
     thumbnail: null,
     prompt: "",
+    favorite: null,
   });
 
   const openPicker = async selectType => {
@@ -71,6 +73,7 @@ const Create = () => {
         video: null,
         thumbnail: null,
         prompt: "",
+        favorite: null,
       });
 
       setUploading(false);
@@ -112,6 +115,30 @@ const Create = () => {
                   />
                 </View>
               </View>
+            )}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            className="w-full items-start mb-5"
+            onPress={() => {
+              setIsFavorite(!isFavorite);
+              setForm({ ...form, favorite: isFavorite });
+            }}>
+            <Text className="text-base text-gray-100 font-pmedium">
+              Favorite
+            </Text>
+            {!isFavorite ? (
+              <Image
+                source={icons.toggleOff}
+                resizeMode="contain"
+                className="w-8 h-8"
+              />
+            ) : (
+              <Image
+                source={icons.toggleOn}
+                resizeMode="contain"
+                className="w-8 h-8"
+              />
             )}
           </TouchableOpacity>
         </View>
