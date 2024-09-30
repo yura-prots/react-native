@@ -4,7 +4,6 @@ import {
   FlatList,
   Image,
   ImageBackground,
-  Text,
   TouchableOpacity,
 } from "react-native";
 import * as Animatable from "react-native-animatable";

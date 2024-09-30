@@ -27,7 +27,7 @@ const Create = () => {
     video: null,
     thumbnail: null,
     prompt: "",
-    favorite: null,
+    favorite: false,
   });
 
   const openPicker = async selectType => {
@@ -63,6 +63,8 @@ const Create = () => {
         userId: user.$id,
       });
 
+      console.log(form.favorite);
+
       Alert.alert("Success", "Post uploaded successfully");
       router.push("/home");
     } catch (error) {
@@ -73,7 +75,7 @@ const Create = () => {
         video: null,
         thumbnail: null,
         prompt: "",
-        favorite: null,
+        favorite: false,
       });
 
       setUploading(false);
@@ -119,15 +121,18 @@ const Create = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="w-full items-start mb-5"
+            className="w-full items-start"
             onPress={() => {
-              setIsFavorite(!isFavorite);
-              setForm({ ...form, favorite: isFavorite });
+              setIsFavorite(() => !isFavorite);
+              setForm({ ...form, favorite: !isFavorite });
+
+              console.log(isFavorite);
+              console.log("form", form.favorite);
             }}>
             <Text className="text-base text-gray-100 font-pmedium">
               Favorite
             </Text>
-            {!isFavorite ? (
+            {isFavorite ? (
               <Image
                 source={icons.toggleOff}
                 resizeMode="contain"
