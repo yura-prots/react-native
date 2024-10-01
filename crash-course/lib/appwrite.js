@@ -128,6 +128,18 @@ export const getLatestPosts = async () => {
   }
 };
 
+export const getSavedPosts = async () => {
+  try {
+    const posts = await database.listDocuments(databaseId, videoCollectionId, [
+      Query.equal("favorite", true),
+    ]);
+
+    return posts.documents;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const searchPosts = async query => {
   try {
     const posts = await database.listDocuments(databaseId, videoCollectionId, [
