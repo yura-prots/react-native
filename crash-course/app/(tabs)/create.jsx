@@ -63,8 +63,6 @@ const Create = () => {
         userId: user.$id,
       });
 
-      console.log(form.favorite);
-
       Alert.alert("Success", "Post uploaded successfully");
       router.push("/home");
     } catch (error) {
